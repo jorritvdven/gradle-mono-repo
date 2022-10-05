@@ -1,8 +1,8 @@
-import org.gradle.accessors.dm.LibrariesForLibs
+import nl.jorritvdven.Versions
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    alias(libs.plugins.kotlin)
+    kotlin("jvm") version Versions.kotlin
 }
 
 repositories {
@@ -10,7 +10,7 @@ repositories {
     mavenCentral()
 }
 
-group "cnl.jorritvdven.test"
+group "nl.jorritvdven.test"
 
 tasks {
     withType<KotlinCompile> {
@@ -30,10 +30,13 @@ tasks {
 }
 
 dependencies {
-    implementation(libs.kotlin.stdlib)
-    implementation(libs.log4j)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlin}")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}")
+    implementation("org.apache.logging.log4j:log4j-core:${Versions.log4j})
 
-    runtimeOnly(libs.kotlin.reflect)
+    runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}")"
 
-    testImplementation(libs.bundles.kotlin.test)
+    testImplementation("org.junit.jupiter:junit-jupiter:${Versions.junit} }
+    testImplementation("org.jetbrains.kotlin:kotlin-test-common:${Versions.kotlin}")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:${Versions.kotlin}")
 }

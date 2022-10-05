@@ -1,19 +1,26 @@
+import nl.jorritvdven.Versions
+
 plugins {
     id("nl.jorritvdven.kotlin-conventions")
-    alias(libs.plugins.kotlin)
-    alias(libs.plugins.kotlin.allopen)
+    id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
 }
 
 dependencies {
-    implementation(enforcedPlatform(libs.quarkus.bom))
-    implementation(libs.bundles.quarkus)
-    implementation(libs.bundles.jackson)
-    implementation(libs.typesafe.config)
-    implementation(libs.kotlin.coroutines)
+    implementation("io.quarkus.platform:quarkus-bom:${Versions.quarkus}")
+    implementation("io.quarkus:quarkus-micrometer")
+    implementation("io.quarkus:quarkus-jackson")
+    implementation("io.quarkus:quarkus-vertx")
+    implementation("io.quarkus:quarkus-kotlin")
+    implementation("io.quarkus:quarkus-arc")
+    implementation("io.quarkus:quarkus-oidc")
+    implementation("io.quarkus:quarkus-smallrye-openapi")
 
-    testImplementation(libs.quarkus.junit5)
-    testImplmentation(libs.quarkus.test.oidc.server)
-    testImplementation(libs.restassured)
+    implementation("com.fasterxml.jackson.core:jackson-databind:${Versions.jackson}")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${Versions.jackson}")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:${Versions.jackson}")
+
+    testImplementation("io.quarkus:quarkus-test-oidc-server")
+    testImplementation("io.rest-assured:rest-assured:${Versions.restAssured}")
 }
 
 allOpen {

@@ -1,3 +1,3 @@
 
-rootProject.name = "gradle-mono-repo"
+rootProject.name = "service-1"
 
